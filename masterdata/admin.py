@@ -12,4 +12,14 @@ class CategoryAdmin(admin.ModelAdmin):
         if db_field.name == "parent":
             kwargs["queryset"] = Category.objects.filter(parent=None)
         return super().formfield_for_foreignkey(db_field, request, **kwargs)
-        
+
+
+@admin.register(Roles)
+class RolesAdmin(admin.ModelAdmin):
+    list_display = ['name','active','created', 'modified']
+    prepopulated_fields = {"slug": ("name",)}
+    search_fields = ['name']
+
+@admin.register(UserRoleConfig)
+class UserRoleConfigAdmin(admin.ModelAdmin):
+    list_display = ['user','role','active','created', 'modified']
