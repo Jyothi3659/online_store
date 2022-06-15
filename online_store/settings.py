@@ -37,7 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'shop'
+    'shop',
+    'masterdata'
 ]
 
 MIDDLEWARE = [
@@ -77,9 +78,9 @@ WSGI_APPLICATION = 'online_store.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'online_store_db',
-        'USER': 'User123',
-        'PASSWORD': 'user@123',
+        'NAME': 'online_store_june15',
+        'USER': 'sampark_user',
+        'PASSWORD': 'sampark_user',
         'HOST': '127.0.0.1',
         'PORT': '',
     }

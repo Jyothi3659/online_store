@@ -1,5 +1,6 @@
 from operator import mod
 from django.db import models
+from django.contrib.auth.models import User
 
 # Create your models here.
 class BaseContent(models.Model):
@@ -12,6 +13,20 @@ class BaseContent(models.Model):
     class Meta:
         abstract    = True
 
+
+class Roles(BaseContent):
+    name            = models.CharField(max_length=150,unique=True)
+    slug            = models.SlugField()
+    
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        verbose_name_plural = "Roles"
+
+class UserRoleConfig(BaseContent):
+    user = models.ForeignKey(User,on_delete=models.DO_NOTHING)
+    role = models.ForeignKey('Roles',on_delete=models.DO_NOTHING)
 
 class Category(BaseContent):
     title = models.CharField(max_length=150)
